@@ -6,10 +6,9 @@ import * as actionCreators from '../state/actionCreators';
 export const AdditionalFeature = props => {
   return (
     <li>
-      {/* Add an onClick that will let you add a feature to your car */}
-      <button className="button">Add</button>
-      <button onClick={e => props.addFeature(props.feature)} className="button">Add</button>
-      {props.feature.name} (+{props.feature.price})
+      {/* Add an onClick to run a function to remove a feature */}
+      <button onClick={e => props.removeFeature(props.feature)} className="button">X</button>
+      {props.feature.name}
     </li>
   );
 };
