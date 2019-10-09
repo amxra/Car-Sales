@@ -1,6 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import * from '../state/actionCreators';
+import { connect } from 'react-redux'
+import * as actionCreators from '../state/actionCreators';
 
 export const Total = props => {
   return (
@@ -9,8 +9,6 @@ export const Total = props => {
     </div>
   );
 };
-
-export default Total;
 
 export default connect(
   state => state,
