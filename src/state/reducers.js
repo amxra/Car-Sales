@@ -17,13 +17,25 @@ const initialStoreData = [
 
 const initialAddPrice = 0
 
+function findElement(arr, id){
+    return arr.filter(item => {
+        return item.id === id;
+    })
+}
+
+// console.log(findElement(initialStoreData, 4))
+
 
 export function carReducer(state = initialCarData, action){
     switch(action.type){
         case types.ADD_FEATURE:
+            if((findElement(state.features, action.payload.id)).length > 0){
+                return state;
+            }
             return {
                 ...state, features: state.features.concat(action.payload)
             };
+            
         case types.REMOVE_FEATURE:
             return {
                 ...state, features: state.features.filter(item => item.id !== action.payload.id)
@@ -35,6 +47,10 @@ export function carReducer(state = initialCarData, action){
 
 export function storeReducer(state = initialStoreData, action){
     switch(action.type){
+        case types.ADD_FEATURE:
+            return state.filter(item => item.id !== action.payload.id)
+        case types.REMOVE_FEATURE:
+            return state.concat(action.payload)
         default:
             return state;
     }
