@@ -1,6 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from '../state/actionCreators';
 
-const Header = props => {
+export const Header = props => {
   return (
     <>
       <figure className="image is-128x128">
@@ -12,4 +14,7 @@ const Header = props => {
   );
 };
 
-export default Header;
+export default connect(
+  state => state,
+  actionCreators
+)(Header);
